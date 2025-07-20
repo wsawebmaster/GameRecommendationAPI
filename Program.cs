@@ -7,7 +7,10 @@ using Microsoft.EntityFrameworkCore;
 
   // Add services to the container.
   builder.Services.AddOpenApi();
-  builder.Services.AddSwaggerGen();
+  builder.Services.AddSwaggerGen(c =>
+{
+    c.EnableAnnotations();
+});
   builder.Services.AddHttpClient<GameApiService>();
   builder.Services.AddDbContext<AppDbContext>();
 
@@ -25,7 +28,7 @@ using Microsoft.EntityFrameworkCore;
   // app.UseHttpsRedirection();
 
   // Configurando as rotas da API
-  app.MapGet("/", () => "Hello-World! Welcome to the Game Recommendation API!");
+//   app.MapGet("/", () => "Hello-World! Bem-vindo à API de recomendação de jogos!");
 app.AddGameRecommendationRoutes();
 
   app.Run();

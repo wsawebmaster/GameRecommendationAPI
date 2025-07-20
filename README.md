@@ -44,10 +44,11 @@ Esta API RESTful recomenda jogos gratuitos com base nos gostos do usuário, incl
     dotnet add package Microsoft.EntityFrameworkCore.Design
     dotnet add package Swashbuckle.AspNetCore
     dotnet add package Microsoft.Extensions.Http
+    dotnet add package Swashbuckle.AspNetCore.Annotations
 
 #### Passo 4: Executando Migrations
 
-    dotnet ef migrations add Initial
+    dotnet ef migrations add InitialCreate
     dotnet ef database update
 
 #### Passo 5: Executando a aplicação:
