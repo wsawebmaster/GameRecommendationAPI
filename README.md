@@ -65,6 +65,51 @@ Esta API RESTful recomenda jogos gratuitos com base nos gostos do usuário, incl
     dotnet new webapi --name GameRecommendationAPI --minimal
     dotnet add package Swashbuckle.AspNetCore
 
+### 📑 Endpoints
+
+#### `GET /games/recommend`
+
+Recomenda um jogo gratuito com base nos filtros do usuário.
+
+**Parâmetros de Query:**
+- `genre` (obrigatório): Gênero do jogo (ex: Shooter, MMORPG)
+- `platform` (opcional): Plataforma desejada (`pc`, `browser` ou `all`)
+- `maxRam` (opcional): Memória RAM máxima disponível em MB
+
+**Exemplo de requisição:**
+```
+GET http://localhost:5074/games/recommend?genre=Shooter&platform=pc&maxRam=4096
+```
+
+**Exemplo de resposta:**
+```json
+{
+  "title": "Gear Up",
+  "genre": "Shooter",
+  "gameUrl": "https://www.freetogame.com/open/gear-up"
+}
+```
+
+---
+
+### `GET /games/recommended`
+
+Retorna todos os jogos já recomendados e salvos no banco de dados.
+
+**Exemplo de resposta:**
+```json
+[
+  {
+    "title": "Warframe",
+    "genre": "Shooter"
+  },
+  {
+    "title": "RuneScape",
+    "genre": "MMORPG"
+  }
+]
+```    
+
 ### 📚 Referências
 
 - [VS Code](https://code.visualstudio.com/) - IDE para desenvolvimento
