@@ -10,12 +10,12 @@ Esta API RESTful recomenda jogos gratuitos com base nos gostos do usuário, incl
 ### ✅ Pré-requisitos
 
 - **VSCode** ou outra IDE de sua preferência (Plugin .Net e C#).
-- **.NET** na versão 7 ou superior instalado.
-- **SQL Server** ou outro banco de dados compatível com Entity Framework.
-- **Entity Framework** ORM que permite interagir com banco de dados usando objetos .NET
+- **.NET 8** instalado.
+- **SQLite** ou outro banco de dados compatível com Entity Framework.
+- **Entity Framework** ORM para interagir com banco de dados usando objetos .NET
 - **Pacotes NuGet**
     - *Para ORM:* 
-        - Microsoft.EntityFrameworkCore.SqlServer
+        - Microsoft.EntityFrameworkCore.Sqlite
         - Microsoft.EntityFrameworkCore.Tools
     - *Para requisições HTTP:*
         - Microsoft.AspNet.WebApi.Client
@@ -38,7 +38,7 @@ Esta API RESTful recomenda jogos gratuitos com base nos gostos do usuário, incl
 
 #### Passo 3: Instalando Dependências:
 
-    dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+    dotnet add package Microsoft.EntityFrameworkCore.Sqlite
     dotnet add package Microsoft.EntityFrameworkCore.Tools
     dotnet add package Microsoft.AspNet.WebApi.Client
     dotnet add package Swashbuckle.AspNetCore
@@ -49,7 +49,7 @@ Esta API RESTful recomenda jogos gratuitos com base nos gostos do usuário, incl
 
 ### 🌐 Acessar API
 
- - [URL da API padrão](http://localhost:5074/weatherforecast)
+ - [URL da API padrão](http://localhost:5074/)
  - [URL da documentação Swagger](http://localhost:5074/swagger/index.html)
 
 #### Sugestão de comando caso queira desenvolver do absoluto zero para implementar manualmente
