@@ -1,22 +1,31 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+  using GameRecommendationAPI.Data;
+  using GameRecommendationAPI.GameRecommendations;
+  using GameRecommendationAPI.Services;
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-builder.Services.AddSwaggerGen();
+  var builder = WebApplication.CreateBuilder(args);
 
-var app = builder.Build();
+  // Add services to the container.
+  builder.Services.AddOpenApi();
+  builder.Services.AddSwaggerGen();
+  builder.Services.AddHttpClient<GameApiService>();
+  builder.Services.AddDbContext<AppDbContext>();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+  var app = builder.Build();
 
-app.UseHttpsRedirection();
+  // Configure the HTTP request pipeline.
+  if (app.Environment.IsDevelopment())
+  {
+      app.MapOpenApi();
+      app.UseSwagger();
+      app.UseSwaggerUI();
+  }
 
-app.MapGet("/", () => "Hello-World! Bem-vindo à API de recomendação de jogos!");
+  // Comentar temporariamente para evitar problemas com HTTPS
+  // app.UseHttpsRedirection();
 
-app.Run();
+  // Configurando as rotas da API
+  app.MapGet("/", () => "Hello-World! Welcome to the Game Recommendation API!");
+app.AddGameRecommendationRoutes();
+
+  app.Run();

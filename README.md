@@ -15,10 +15,10 @@ Esta API RESTful recomenda jogos gratuitos com base nos gostos do usuário, incl
 - **Entity Framework** ORM para interagir com banco de dados usando objetos .NET
 - **Pacotes NuGet**
     - *Para ORM:* 
+        - Microsoft.EntityFrameworkCore
         - Microsoft.EntityFrameworkCore.Sqlite
         - Microsoft.EntityFrameworkCore.Tools
-    - *Para requisições HTTP:*
-        - Microsoft.AspNet.WebApi.Client
+        - Microsoft.EntityFrameworkCore.Design
     - *Para documentação Swagger:*
         - Swashbuckle.AspNetCore
 
@@ -38,12 +38,19 @@ Esta API RESTful recomenda jogos gratuitos com base nos gostos do usuário, incl
 
 #### Passo 3: Instalando Dependências:
 
+    dotnet add package Microsoft.EntityFrameworkCore
     dotnet add package Microsoft.EntityFrameworkCore.Sqlite
     dotnet add package Microsoft.EntityFrameworkCore.Tools
-    dotnet add package Microsoft.AspNet.WebApi.Client
+    dotnet add package Microsoft.EntityFrameworkCore.Design
     dotnet add package Swashbuckle.AspNetCore
+    dotnet add package Microsoft.Extensions.Http
 
-#### Passo 4: Executando a aplicação:
+#### Passo 4: Executando Migrations
+
+    dotnet ef migrations add Initial
+    dotnet ef database update
+
+#### Passo 5: Executando a aplicação:
 
     dotnet run
 
@@ -54,13 +61,16 @@ Esta API RESTful recomenda jogos gratuitos com base nos gostos do usuário, incl
 
 #### Sugestão de comando caso queira desenvolver do absoluto zero para implementar manualmente
 
-    dotnet new webapi --name GameRecommendationAPI -minimal
+    dotnet new webapi --name GameRecommendationAPI --minimal
+    dotnet add package Swashbuckle.AspNetCore
 
 ### 📚 Referências
 
 - [VS Code](https://code.visualstudio.com/) - IDE para desenvolvimento
 - [.NET](https://dotnet.microsoft.com/en-us/download) - SDK do .NET
 - [SQL Server](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads) - Banco de Dados usado
+- [Connection Strings](https://www.connectionstrings.com/) - Referências de strings conectividade com banco de dados
+
 - [.NET ef tools](https://learn.microsoft.com/en-us/ef/core/cli/dotnet) - Conjunto de ferramentas
 - [NetEntityFramework](https://learn.microsoft.com/en-us/ef/core/cli/dotnet) - ORM que facilita interação com Banco de dados
 - [NugetPackages](https://www.nuget.org/packages) - Gerenciador de pacotes oficial para o .NET
