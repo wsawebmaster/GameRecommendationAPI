@@ -28,12 +28,25 @@ public class GameApiService
         if (parameters.Any())
             query += "?" + string.Join("&", parameters);
 
-        var response = await _httpClient.GetAsync(query);
-        response.EnsureSuccessStatusCode();
-        
-        var games = await response.Content.ReadFromJsonAsync<List<FreeToPlayGame>>();
-        if (games == null)
+        List<FreeToPlayGame> games = new();
+
+        try
+        {
+            var response = await _httpClient.GetAsync(query);
+            response.EnsureSuccessStatusCode();
+            games = await response.Content.ReadFromJsonAsync<List<FreeToPlayGame>>() ?? new List<FreeToPlayGame>();
+
+        }
+        catch (HttpRequestException)
+        {
             return new List<FreeToPlayGame>();
+        }
+        catch (Exception)
+        {
+            return new List<FreeToPlayGame>();
+        }
+
+        
 
         // Filtrar por RAM (se fornecido)
         if (maxRam.HasValue && maxRam > 0)
